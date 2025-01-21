@@ -1,0 +1,75 @@
+==============================================================================
+------------------------------------------------------------------------------
+Timeline.nvim - Reading time estimator for Markdown files
+Copyright (c) 2024 Nick Skriabin
+MIT License
+
+------------------------------------------------------------------------------
+A Neovim plugin that adds reading time estimates to Markdown headers.
+Displays timestamps as virtual text showing when each section will be reached
+based on average reading speed.
+
+------------------------------------------------------------------------------
+Features:
+- Estimates reading time for each section based on word count
+- Shows timestamps in HH:mm:ss format
+- Multiple display formats (full, range, short)
+- Configurable words per minute (WPM)
+- Auto-updates on file changes
+- Skips code blocks in time estimation
+- Handles Markdown formatting
+
+------------------------------------------------------------------------------
+Usage:
+```lua
+-- Basic setup with defaults
+require('timeline').setup{}
+
+------------------------------------------------------------------------------
+-- Custom configuration
+require('timeline').setup{
+    words_per_minute = 250,  -- Set custom reading speed
+    format = 'full',         -- 'full', 'range', or 'short'
+    enabled = true          -- Enable on startup
+}
+```
+
+------------------------------------------------------------------------------
+Commands:
+- `:TimelineToggle` - Toggle timeline visibility
+
+------------------------------------------------------------------------------
+Display formats:
+- full:  [00:00:00 - 00:01:30 @ 01:30]
+- range: [00:00:00 - 00:01:30]
+- short: [00:00:00]
+
+------------------------------------------------------------------------------
+                                                                    *M.toggle()*
+                                  `M.toggle`()
+Toggle the visibility of timeline timestamps
+Enables or disables the plugin and updates the display accordingly.
+Also shows a notification about the new state.
+
+------------------------------------------------------------------------------
+                                                                    *M.update()*
+                                  `M.update`()
+Force update of all timestamps in the current buffer
+Recalculates reading times and refreshes virtual text for all headers
+
+------------------------------------------------------------------------------
+                                                                   *M.set_wpm()*
+                               `M.set_wpm`({wpm})
+Set the reading speed in words per minute (WPM)
+@param wpm number|nil The reading speed in WPM (default: 200)
+
+------------------------------------------------------------------------------
+                                                                *M.set_format()*
+                            `M.set_format`({format})
+Set the display format for timestamps
+@param format string The format to use: 'full' ([00:00:00 - 00:01:30 @ 01:30]),
+                                       'range' ([00:00:00 - 00:01:30]),
+                                       or 'short' ([00:00:00])
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

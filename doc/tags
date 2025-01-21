@@ -1,0 +1,4 @@
+M.set_format()	timeline.txt	/*M.set_format()*
+M.set_wpm()	timeline.txt	/*M.set_wpm()*
+M.toggle()	timeline.txt	/*M.toggle()*
+M.update()	timeline.txt	/*M.update()*
